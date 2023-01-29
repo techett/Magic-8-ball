@@ -1,11 +1,12 @@
-'''
+###############################################
+#
+#   Created with care by C.T.
+#   https://github.com/techett
+#
+###############################################
 
-Magic 8-Ball
-by Techett
-
-'''
-
-import sys, os, time, math, random
+import time
+import random
 
 
 
