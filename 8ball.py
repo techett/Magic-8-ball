@@ -11,18 +11,23 @@ version = 'Build v1'
 author = 'https://github.com/techett'
 title = "Magical 8 Ball Questions"
 menu = "Press 1 for asking a question\nPress 2 to quit\n"
+error_wrong_input = "That's not an appropiate response. Try again."
 
 def question_menu():
-    print("Welcome to " + title + ": " + version + "\nCreated by: " + author)
-    menu_answer = int(input(menu))
+    while True:
+        try:
+            menu_answer = int(input(menu))
+            break
+        except ValueError:
+            print(error_wrong_input)
         
     if menu_answer == 1:
         question_ask()
     elif menu_answer == 2:
         quit()
     else:
-        print("Sorry that's not an apporpiate answer.\n")
-        main()
+        print(error_wrong_input)
+        question_menu()
         
 def another_question_menu():
     another_question = ["\nWould you like another question?\n",
@@ -30,7 +35,12 @@ def another_question_menu():
                             "\nGot another question?\n"]
     print(random.choice(another_question))
     
-    another_question_answer = int(input(menu))
+    while True:
+        try:
+            another_question_answer = int(input(menu))
+            break
+        except ValueError:
+            print(error_wrong_input)
     
     if another_question_answer == 1:
         question_ask()
@@ -38,7 +48,7 @@ def another_question_menu():
         print("Good bye!")
         quit()
     else:
-        print("That's not an appropiate answer... Try again\n")
+        print(error_wrong_input)
         another_question_menu()
         
 def question_ask():
@@ -63,6 +73,7 @@ def response():
     another_question_menu()
     
 def main():
+    print("Welcome to " + title + ": " + version + "\nCreated by: " + author)
     question_menu()
 
 main()
