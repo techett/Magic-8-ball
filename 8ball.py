@@ -59,18 +59,22 @@ def question_ask():
     response()
 
 def response():
-    question_answer_list = ["Ask again later.", 
-                            "Yes.", 
-                            "I don't think so.", 
-                            "For sure!", 
-                            "My sources say no.", 
-                            "Don't count on it.", 
-                            "How about not?", 
-                            "YES YES YES!!!", 
-                            "Don't hold your breath."]
-    question_answer = random.choice(question_answer_list)
-    print(question_answer)
-    another_question_menu()
+    question_answer_list = ["Ask again later.", # neutr
+                            "Yes.",  # pos
+                            "I don't think so.",  #neg
+                            "For sure!", # pos
+                            "My sources say no.", #neg
+                            "YES YES YES!!!", # pos
+                            "Don't hold your breath."] #neg
+    shuffle_one = random.randint(1, 6)
+    shuffle_two = random.randint(1, 6)
+    multiply_and_divide = (shuffle_one / 2) * (shuffle_two / 2)
+    if int(multiply_and_divide) > 6:
+        response()
+    else:
+        question_answer = question_answer_list[int(multiply_and_divide)]
+        print(question_answer)
+        another_question_menu()
     
 def main():
     print("Welcome to " + title + ": " + version + "\nCreated by: " + author)
